@@ -1,0 +1,53 @@
+# 推到 main（包含小編在 TinaCMS 後台存檔）時，自動建置網站並發佈到 GitHub Pages
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # 還沒設定 Tina Cloud 時改用純靜態建置（沒有後台），設好 TINA_TOKEN 後自動改用正式建置
+      - run: |
+          if [ -n "$TINA_TOKEN" ]; then
+            npm run build
+          else
+            npm run build:static
+            rm -rf dist/admin
+          fi
+        env:
+          BASE_PATH: ${{ github.event.repository.name }}
+          TINA_PUBLIC_BASE_PATH: ${{ github.event.repository.name }}
+          TINA_PUBLIC_CLIENT_ID: ${{ vars.TINA_CLIENT_ID }}
+          TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

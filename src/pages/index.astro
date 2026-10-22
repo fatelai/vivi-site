@@ -1,0 +1,24 @@
+---
+import client from "../../tina/__generated__/client";
+import Site from "../components/Site";
+import "../styles/global.css";
+
+const res = await client.queries.site({ relativePath: "site.json" });
+const { seo } = res.data.site;
+---
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{seo?.title}</title>
+    <meta name="description" content={seo?.description ?? ""} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- 整頁是一個 React 元件，讓 TinaCMS 後台可以即時預覽修改 -->
+    <Site client:load query={res.query} variables={res.variables} data={res.data} />
+  </body>
+</html>
