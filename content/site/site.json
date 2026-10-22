@@ -6,82 +6,99 @@
   "brand": { "name": "Vivi", "suffix": "Sound Healing" },
   "hero": {
     "eyebrow": "Singing Bowl · Sound Healing",
-    "title": "在聲音與靜默之間\n回到自己",
-    "subtitle": "頌缽聲音療癒｜團體課與一對一\n讓振動成為感受的入口，讓自己被好好地承接。",
+    "title": "在聲音與靜默之間，\n回到自己。",
+    "subtitle": "讓頌缽的振動成為感受的入口。不需要任何經驗，只需要躺下、呼吸、聆聽，讓自己被好好地承接。",
     "image": "/uploads/hero.jpg",
     "primaryLabel": "LINE 預約",
-    "secondaryLabel": "查看課程"
+    "secondaryLabel": "聽一段頌缽聲"
+  },
+  "quote": {
+    "text": "療癒不是不再感到痛苦，也不是努力成為更好的人；\n而是在聲音與靜默之間，開始聆聽生命此刻真實的頻率。",
+    "author": "Vivi"
   },
   "about": {
-    "eyebrow": "About Vivi",
+    "eyebrow": "About",
     "heading": "關於 Vivi",
-    "image": "/uploads/vivi.jpg",
+    "image": "/uploads/bowl.jpg",
+    "image2": "/uploads/vivi.jpg",
     "paragraphs": [
-      "從 4 歲開始接觸舞蹈、繪畫、音樂等藝術教育，在藝術、感受與創作之中成長。著迷於花朵、哲學與文字，也相信每一個細微的感受，都值得被聽見。",
-      "2024 年參加 Shalaka 老師的頌缽培訓，在生命低潮的時刻被聲音承接，從此踏上尋找聲音的旅程，並持續跟隨 Guy 老師學習。長期從事空中瑜珈、空中療癒與頌缽聲音療癒的教學。",
-      "她相信，療癒不是不再感到痛苦，也不是努力成為一個「更好」的人；而是在聲音與靜默之間，慢慢放下對答案的執著，開始聆聽生命此刻真實的頻率。"
+      "從 4 歲開始接觸舞蹈、繪畫與音樂，在藝術與感受之中長大。著迷於花朵、哲學與文字，相信每一個細微的感受，都值得被聽見。",
+      "在生命能量最低的時候被頌缽的聲音承接，從此踏上尋找聲音的旅程。現在長期帶領頌缽聲音療癒，也教空中瑜珈、空中伸展療癒與陰瑜珈。"
     ],
-    "stats": [
-      { "value": "2024", "label": "踏上頌缽之路" },
-      { "value": "每月", "label": "固定團體頌缽課" }
-    ],
-    "certs": ["頌缽聲音療癒", "空中瑜珈", "空中伸展療癒", "陰瑜珈", "兒童瑜珈"]
+    "timeline": [
+      { "year": "2024.01", "text": "參加 Shalaka 老師的頌缽培訓，開始與頌缽同行" },
+      { "year": "之後", "text": "持續跟隨 Guy 老師學習聲音療癒" },
+      { "year": "2026", "text": "每月固定開設團體頌缽課「聲音之中」" }
+    ]
   },
   "classes": {
     "eyebrow": "Sessions",
-    "heading": "課程介紹",
-    "intro": "不需要任何經驗，只需要躺下、呼吸、聆聽。",
+    "heading": "兩種方式，與聲音相遇",
+    "intro": "第一次接觸也沒關係。穿著舒適的衣服，帶著想好好休息的心就好。",
     "items": [
       {
         "title": "團體頌缽音療",
-        "tag": "每月固定",
-        "description": "和一群人一起躺下，讓頌缽的聲音一層一層展開、交疊，再回到靜默。適合第一次接觸頌缽、想好好休息的你。",
-        "duration": "約 90 分鐘",
-        "price": "請洽 LINE",
+        "description": "和一群人一起躺下，讓頌缽的聲音一層一層展開、延伸、交疊，再回到靜默。每月固定一場，適合第一次接觸頌缽、想好好休息的你。",
+        "duration": "[時長]",
+        "tag": "每月一場",
+        "price": "[費用]",
+        "linkLabel": "看近期場次",
         "image": "/uploads/group.jpg"
       },
       {
         "title": "一對一頌缽療程",
+        "description": "依照你當下的身心狀態安排聲音與流程。在安靜的空間裡，讓振動陪你慢慢放下累積的緊繃。預約制，時間可以和 Vivi 討論。",
+        "duration": "[時長]",
         "tag": "預約制",
-        "description": "依照你當下的身心狀態安排聲音與流程，在安靜的空間裡，讓振動陪你慢慢放下累積的緊繃。",
-        "duration": "約 60 分鐘",
-        "price": "請洽 LINE",
+        "price": "[費用]",
+        "linkLabel": "LINE 預約時間",
         "image": "/uploads/private.jpg"
-      },
-      {
-        "title": "主題工作坊",
-        "tag": "不定期",
-        "description": "結合香氣、低空掛布、冥想等不同主題的頌缽體驗，場次與內容會在近期場次和 LINE 公告。",
-        "duration": "依場次",
-        "price": "依場次",
-        "image": "/uploads/workshop.jpg"
       }
+    ],
+    "note": "也不定期舉辦主題工作坊，例如香氣調製 × 頌缽、低空掛布漂浮音療。場次會在下方「近期場次」與 LINE 公告。"
+  },
+  "journey": {
+    "eyebrow": "The Journey",
+    "heading": "一場音療會發生什麼",
+    "steps": [
+      { "title": "安頓", "text": "躺下、蓋上毯子，透過簡單的呼吸，先讓身體慢下來。" },
+      { "title": "聆聽", "text": "頌缽的聲音一層一層展開、延伸、交疊。不需要理解，只需要聽。" },
+      { "title": "靜默", "text": "聲音慢慢遠去，留下一段安靜的空間，讓感受自然發生。" },
+      { "title": "喚醒", "text": "從呼吸開始，重新感受身體，帶著剛才的安靜回到日常。" }
     ]
   },
   "schedule": {
     "eyebrow": "Upcoming",
     "heading": "近期場次",
-    "note": "場次以 LINE 公告為準，一對一療程請直接預約時間。",
+    "note": "場次以 LINE 公告為準，一對一療程請直接預約。",
     "items": [
-      { "date": "11/23（日）", "time": "14:00–15:30", "title": "聲音之中：每月頌缽", "note": "（範例場次，請換成實際日期）" },
-      { "date": "12/21（日）", "time": "14:00–15:30", "title": "聲音之中：每月頌缽", "note": "（範例場次，請換成實際日期）" }
+      { "date": "[日期]", "time": "[時間]", "title": "聲音之中：每月頌缽", "note": "團體頌缽音療 · [地點]" },
+      { "date": "[日期]", "time": "[時間]", "title": "[工作坊名稱]", "note": "主題工作坊 · [地點]" }
     ]
   },
   "videos": {
     "eyebrow": "Listen",
-    "heading": "聽聽頌缽的聲音",
-    "intro": "戴上耳機，先感受一下聲音的振動。",
+    "heading": "先聽聽\n頌缽的聲音",
+    "intro": "戴上耳機，找一個安靜的角落。在預約之前，先感受一下聲音的振動。",
     "items": [
-      { "title": "敲缽的日常", "url": "https://www.instagram.com/vivi.huang_/reel/DZbviu6OCjo/" }
+      { "title": "敲缽的日常（範例影片，請換成頌缽影片）", "url": "https://www.instagram.com/vivi.huang_/reel/DZbviu6OCjo/" }
     ]
   },
   "testimonials": {
     "eyebrow": "Voices",
-    "heading": "學員回饋",
+    "heading": "躺下之後，他們說",
     "items": [
-      { "quote": "（範例）請換成學員的真實回饋。", "author": "學員" },
-      { "quote": "（範例）請換成學員的真實回饋。", "author": "學員" },
-      { "quote": "（範例）請換成學員的真實回饋。", "author": "學員" }
+      { "quote": "[學員回饋內容]", "author": "[學員名稱]" },
+      { "quote": "[學員回饋內容]", "author": "[學員名稱]" },
+      { "quote": "[學員回饋內容]", "author": "[學員名稱]" }
+    ]
+  },
+  "gallery": {
+    "images": [
+      { "src": "/uploads/candle.jpg", "alt": "桌上的燭光" },
+      { "src": "/uploads/gong.jpg", "alt": "鑼與排列整齊的頌缽" },
+      { "src": "/uploads/circle.jpg", "alt": "圍成一圈的頌缽與燭光" },
+      { "src": "/uploads/workshop.jpg", "alt": "頌缽旁的花與燭台" }
     ]
   },
   "cta": {
@@ -92,16 +109,16 @@
   "signup": {
     "url": "https://line.me/R/ti/p/@vivi"
   },
-  "theme": { "button": "#8a6a3b", "background": "#fbf7f1", "section": "#f2ebe0" },
+  "theme": { "button": "#c9a063", "background": "#15120f", "section": "#1c1814" },
   "contact": {
     "tagline": "讓聲音成為容器，讓自己被好好地承接。",
-    "address": "台北市（地址待補）",
+    "address": "[上課地址]",
     "email": "",
     "phone": "",
-    "line": "@vivi（待補）",
+    "line": "[LINE ID]",
     "socials": [
-      { "label": "Instagram", "url": "https://www.instagram.com/vivi.huang_/" }
+      { "label": "Instagram", "handle": "@vivi.huang_", "url": "https://www.instagram.com/vivi.huang_/" }
     ],
-    "copyright": "© 2026 Vivi Sound Healing. All rights reserved."
+    "copyright": "© 2026 Vivi Sound Healing"
   }
 }

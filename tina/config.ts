@@ -7,7 +7,10 @@ const text = (name: string, label: string, extra: object = {}) => ({ type: "stri
 const textarea = (name: string, label: string) => text(name, label, { ui: { component: "textarea" } });
 const image = (name: string, label: string) => ({ type: "image", name, label });
 const color = (name: string, label: string) => text(name, label, { ui: { component: "color", colorFormat: "hex" } });
-const sectionHead = [text("eyebrow", "小標（英文）"), text("heading", "標題")];
+const sectionHead = [text("eyebrow", "小標（英文）"), text("heading", "標題（按 Enter 換行）", { ui: { component: "textarea" } })];
+const list = (name: string, label: string, fields: object[], itemLabel: (item: any) => string) => ({
+  type: "object", name, label, list: true, ui: { itemProps: (item: any) => ({ label: itemLabel(item) }) }, fields,
+});
 
 export default defineConfig({
   branch,
@@ -42,31 +45,31 @@ export default defineConfig({
           },
           {
             type: "object", name: "brand", label: "Logo 文字",
-            fields: [text("name", "主要文字"), text("suffix", "副文字")],
+            fields: [text("name", "主要文字"), text("suffix", "副文字（英文）")],
           },
           {
             type: "object", name: "hero", label: "首頁大圖區",
             fields: [
               text("eyebrow", "小標（英文）"),
               textarea("title", "大標題（按 Enter 換行）"),
-              textarea("subtitle", "介紹文字（按 Enter 換行）"),
-              image("image", "背景圖片"),
+              textarea("subtitle", "介紹文字"),
+              image("image", "拱形照片"),
               text("primaryLabel", "預約按鈕文字"),
-              text("secondaryLabel", "查看課程按鈕文字"),
+              text("secondaryLabel", "聆聽按鈕文字"),
             ],
           },
           {
-            type: "object", name: "about", label: "關於我",
+            type: "object", name: "quote", label: "一句話",
+            fields: [textarea("text", "引言（按 Enter 換行）"), text("author", "署名")],
+          },
+          {
+            type: "object", name: "about", label: "關於 Vivi",
             fields: [
               ...sectionHead,
-              image("image", "老師照片"),
+              image("image", "大照片"),
+              image("image2", "小照片（拱形）"),
               text("paragraphs", "介紹段落", { list: true, ui: { component: "textarea" } }),
-              {
-                type: "object", name: "stats", label: "數字亮點", list: true,
-                ui: { itemProps: (item: any) => ({ label: `${item?.value ?? ""} ${item?.label ?? ""}` }) },
-                fields: [text("value", "數字"), text("label", "說明")],
-              },
-              text("certs", "證照", { list: true }),
+              list("timeline", "歷程", [text("year", "時間"), text("text", "內容")], (i) => `${i?.year ?? ""} ${i?.text ?? ""}`),
             ],
           },
           {
@@ -74,18 +77,23 @@ export default defineConfig({
             fields: [
               ...sectionHead,
               text("intro", "說明文字"),
-              {
-                type: "object", name: "items", label: "課程", list: true,
-                ui: { itemProps: (item: any) => ({ label: item?.title }) },
-                fields: [
-                  text("title", "課程名稱"),
-                  text("tag", "標籤（例如：初學友善）"),
-                  textarea("description", "課程說明"),
-                  text("duration", "時長"),
-                  text("price", "價格"),
-                  image("image", "課程圖片"),
-                ],
-              },
+              list("items", "課程", [
+                text("title", "課程名稱"),
+                textarea("description", "課程說明"),
+                text("duration", "時長"),
+                text("tag", "方式／人數（例如：每月一場、預約制）"),
+                text("price", "費用"),
+                text("linkLabel", "連結文字（例如：看近期場次）"),
+                image("image", "課程圖片"),
+              ], (i) => i?.title),
+              textarea("note", "補充說明（例如：主題工作坊）"),
+            ],
+          },
+          {
+            type: "object", name: "journey", label: "一場音療的流程",
+            fields: [
+              ...sectionHead,
+              list("steps", "步驟", [text("title", "名稱"), textarea("text", "說明")], (i) => i?.title),
             ],
           },
           {
@@ -93,16 +101,12 @@ export default defineConfig({
             fields: [
               ...sectionHead,
               text("note", "說明文字"),
-              {
-                type: "object", name: "items", label: "場次", list: true,
-                ui: { itemProps: (item: any) => ({ label: `${item?.date ?? ""} ${item?.title ?? ""}` }) },
-                fields: [
-                  text("date", "日期（例如：11/23（日））"),
-                  text("time", "時間（例如：14:00–15:30）"),
-                  text("title", "名稱"),
-                  text("note", "備註（例如：團體課・名額有限）"),
-                ],
-              },
+              list("items", "場次", [
+                text("date", "日期（例如：11/23）"),
+                text("time", "時間（例如：週日 14:00–15:30）"),
+                text("title", "名稱"),
+                text("note", "類型與地點（例如：團體頌缽音療 · 大安區）"),
+              ], (i) => `${i?.date ?? ""} ${i?.title ?? ""}`),
             ],
           },
           {
@@ -110,26 +114,22 @@ export default defineConfig({
             fields: [
               ...sectionHead,
               text("intro", "說明文字"),
-              {
-                type: "object", name: "items", label: "影片", list: true,
-                ui: { itemProps: (item: any) => ({ label: item?.title || item?.url }) },
-                fields: [
-                  text("title", "影片標題"),
-                  text("url", "影片網址（YouTube 或 Instagram 貼文／Reels 網址）"),
-                ],
-              },
+              list("items", "影片", [
+                text("title", "影片標題"),
+                text("url", "影片網址（YouTube 或 Instagram 貼文／Reels 網址）"),
+              ], (i) => i?.title || i?.url),
             ],
           },
           {
             type: "object", name: "testimonials", label: "學員回饋",
             fields: [
               ...sectionHead,
-              {
-                type: "object", name: "items", label: "回饋", list: true,
-                ui: { itemProps: (item: any) => ({ label: item?.author }) },
-                fields: [textarea("quote", "回饋內容"), text("author", "學員")],
-              },
+              list("items", "回饋", [textarea("quote", "回饋內容"), text("author", "學員")], (i) => i?.author),
             ],
+          },
+          {
+            type: "object", name: "gallery", label: "照片帶",
+            fields: [list("images", "照片", [image("src", "照片"), text("alt", "照片說明（給看不到圖的人）")], (i) => i?.alt)],
           },
           {
             type: "object", name: "cta", label: "預約區塊",
@@ -137,16 +137,14 @@ export default defineConfig({
           },
           {
             type: "object", name: "signup", label: "報名連結",
-            fields: [
-              text("url", "LINE 預約連結（所有預約按鈕都會連到這裡）"),
-            ],
+            fields: [text("url", "LINE 預約連結（所有預約按鈕都會連到這裡）")],
           },
           {
             type: "object", name: "theme", label: "網站配色",
             fields: [
-              color("button", "按鈕色（也用在小標、場次日期、預約區塊；按鈕字是白色，請選深一點的顏色）"),
-              color("background", "主背景色"),
-              color("section", "區塊背景色（課程等交錯區塊）"),
+              color("button", "強調色（按鈕、小標、編號、預約區塊；按鈕上的字是深色，請選亮一點的顏色）"),
+              color("background", "主背景色（建議深色）"),
+              color("section", "區塊背景色（比主背景稍亮一點）"),
             ],
           },
           {
@@ -157,11 +155,7 @@ export default defineConfig({
               text("email", "Email（沒有就留空）"),
               text("phone", "電話（沒有就留空）"),
               text("line", "LINE ID"),
-              {
-                type: "object", name: "socials", label: "社群連結", list: true,
-                ui: { itemProps: (item: any) => ({ label: item?.label }) },
-                fields: [text("label", "名稱"), text("url", "網址")],
-              },
+              list("socials", "社群連結", [text("label", "名稱（例如：Instagram）"), text("handle", "顯示文字（例如：@vivi.huang_）"), text("url", "網址")], (i) => i?.label),
               text("copyright", "版權文字"),
             ],
           },
